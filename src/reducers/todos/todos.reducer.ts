@@ -1,12 +1,36 @@
 import { v6 as uuidv6 } from 'uuid';
 import { Todo, TodoStatus } from '../../types/todo.interface';
 import { TodoAction, TODOS_ACTIONS, TodosState } from './todos.types';
+import { LS_TODOS_KEY } from '../../helpers/constants.helper';
 
 export const INITIAL_TODOS_STATE: TodosState = {
   todos: [],
   totalCount: 0,
   activeCount: 0,
   activeTodoFilter: null
+};
+
+export const TodosStateInitializer = () => {
+  const lsKey = LS_TODOS_KEY;
+  const lsTodosData = localStorage.getItem(lsKey);
+
+  if (!lsTodosData) {
+    return INITIAL_TODOS_STATE;
+  }
+
+  try {
+    const todosState: TodosState = {
+      ...INITIAL_TODOS_STATE,
+      todos: JSON.parse(lsTodosData)
+    };
+
+    return todosState;
+  } catch {
+    console.error(
+      `Invalid JSON data in the local storage by the '${lsKey}' key`
+    );
+    return INITIAL_TODOS_STATE;
+  }
 };
 
 export const TodosReducer = (state: TodosState, action: TodoAction) => {
