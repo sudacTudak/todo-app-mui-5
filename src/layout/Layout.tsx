@@ -12,35 +12,40 @@ export const Layout = ({ children }: LayoutProps) => {
         justifyContent: 'center'
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center'
+            flexDirection: 'column',
+            rowGap: '30px'
           }}
         >
           <Typography
             component="h1"
-            variant="h2"
+            variant="h1"
             noWrap
             sx={{
-              fontWeight: 700,
-              color: 'primary.light',
+              alignSelf: 'center',
               padding: '0 15px',
               borderBottomWidth: '3px',
               borderBottomStyle: 'solid',
-              borderBottomColor: 'primary.light'
+              borderBottomColor: 'primary.light',
+              fontWeight: 700,
+              color: 'primary.light'
             }}
           >
             TodoApp
           </Typography>
-        </Box>
-        <Box
-          sx={{
-            padding: '10px'
-          }}
-        >
-          {children}
+          <Box
+            sx={{
+              minHeight: '400px',
+              padding: '10px',
+              borderRadius: '10px',
+              backgroundColor: 'red'
+            }}
+          >
+            {children}
+          </Box>
         </Box>
       </Container>
     </Box>
