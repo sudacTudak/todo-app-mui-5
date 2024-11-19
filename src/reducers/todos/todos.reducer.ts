@@ -51,6 +51,10 @@ export const TodosReducer = (state: TodosState, action: TodoAction) => {
     case TODOS_ACTIONS.ADD_TODO: {
       const { todoTitle } = action.payload;
 
+      if (!todoTitle.trim()) {
+        return state;
+      }
+
       const newTodo: Todo = {
         id: uuidv6(),
         title: todoTitle,
