@@ -84,6 +84,36 @@ export const TodosReducer = (state: TodosState, action: TodoAction) => {
           newStatus === 'active' ? state.activeCount + 1 : state.activeCount - 1
       };
     }
+    case TODOS_ACTIONS.EDIT_TODO: {
+      const { todoId, newTitle } = action.payload;
+      const todos = state.todos;
+
+      if (!newTitle.trim()) {
+        return state;
+      }
+
+      const existedTodoIndex = todos.findIndex((todo) => todo.id === todoId);
+
+      if (
+        existedTodoIndex === -1 ||
+        todos[existedTodoIndex]?.title === newTitle
+      ) {
+        return state;
+      }
+
+      const newTodo: Todo = {
+        ...todos[existedTodoIndex],
+        title: newTitle
+      };
+
+      const newTodoArray = Object.assign([], todos);
+      newTodoArray.splice(existedTodoIndex, 1, newTodo);
+
+      return {
+        ...state,
+        todos: newTodoArray
+      };
+    }
     case TODOS_ACTIONS.DELETE_TODO: {
       const { todoId } = action.payload;
 

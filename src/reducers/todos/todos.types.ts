@@ -14,6 +14,7 @@ export enum TODOS_ACTIONS {
   ADD_TODO = 'ADD_TODO',
   DELETE_TODO = 'DELETE_TODO',
   TOGGLE_TODO = 'TOGGLE_TODO',
+  EDIT_TODO = 'EDIT_TODO',
   CHANGE_FILTER = 'CHANGE_FILTER',
   DELETE_COMPLETED = 'DELETE_COMPLETED'
 }
@@ -44,6 +45,14 @@ export interface ToggleTodoAction {
   };
 }
 
+export interface EditTodoAction {
+  type: TODOS_ACTIONS.EDIT_TODO;
+  payload: {
+    todoId: string;
+    newTitle: string;
+  };
+}
+
 export interface ChangeFilterAction {
   type: TODOS_ACTIONS.CHANGE_FILTER;
   payload: {
@@ -60,5 +69,6 @@ export type TodoAction =
   | AddTodoAction
   | DeleteTodoAction
   | ToggleTodoAction
+  | EditTodoAction
   | ChangeFilterAction
   | DeleteCompletedAction;
