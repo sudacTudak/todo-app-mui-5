@@ -41,7 +41,7 @@ export const Layout = ({ children }: LayoutProps) => {
               minHeight: '400px',
               padding: '10px',
               borderRadius: '10px',
-              backgroundColor: 'red'
+              bgcolor: 'background.default'
             }}
           >
             {children}
