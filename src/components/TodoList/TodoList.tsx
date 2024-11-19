@@ -12,7 +12,7 @@ export const TodoList = ({
   editTodo
 }: TodoListProps) => {
   return (
-    <List>
+    <List sx={{ maxHeight: '330px', overflowY: 'auto' }}>
       {todosFilterFunction(todos, todosFilter).map((todo) => (
         <Fragment key={todo.id}>
           <TodoListItem

@@ -38,7 +38,7 @@ export const Layout = ({ children }: LayoutProps) => {
           </Typography>
           <Box
             sx={{
-              minHeight: '400px',
+              height: '50vh',
               padding: '10px',
               borderRadius: '10px',
               bgcolor: 'background.default'

@@ -5,8 +5,10 @@ import {
   TodosStateInitializer
 } from './reducers/todos/todos.reducer';
 import { TodoList } from './components/TodoList/TodoList';
-import { TODOS_ACTIONS } from './reducers/todos/todos.types';
+import { TodoFilter, TODOS_ACTIONS } from './reducers/todos/todos.types';
 import { AddTodoField } from './components/AddTodoField/AddTodoField';
+import { Box, Button, Divider, Typography } from '@mui/material';
+import { FilterControls } from './components/FilterControls/FilterControls';
 import { LS_TODOS_KEY } from './helpers/constants.helper';
 
 const App = () => {
@@ -56,16 +58,66 @@ const App = () => {
     });
   };
 
+  const changeTodoFilter = (filter: TodoFilter) => {
+    dispatchTodos({
+      type: TODOS_ACTIONS.CHANGE_FILTER,
+      payload: { filter }
+    });
+  };
+
+  const deleteCompletedTodos = () => {
+    dispatchTodos({
+      type: TODOS_ACTIONS.DELETE_COMPLETED
+    });
+  };
+
   return (
     <Layout>
-      <AddTodoField addTodo={addTodo} />
-      <TodoList
-        todos={todos}
-        todosFilter={activeTodoFilter}
-        deleteTodo={deleteTodo}
-        toggleTodo={toggleTodo}
-        editTodo={editTodo}
-      />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%'
+        }}
+      >
+        <AddTodoField addTodo={addTodo} />
+        <Box sx={{ flex: '1 0 auto' }}>
+          <TodoList
+            todos={todos}
+            todosFilter={activeTodoFilter}
+            deleteTodo={deleteTodo}
+            toggleTodo={toggleTodo}
+            editTodo={editTodo}
+          />
+        </Box>
+        <Box>
+          <Divider />
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              p: '10px 5px 0'
+            }}
+          >
+            <Box>
+              <Typography color="textSecondary" component="p">
+                Items left:&nbsp;
+                <Typography component="span" sx={{ fontWeight: 700 }}>
+                  {activeCount}/{totalCount}
+                </Typography>
+              </Typography>
+            </Box>
+            <FilterControls
+              activeFilter={activeTodoFilter}
+              changeFilter={changeTodoFilter}
+            />
+            <Button variant="text" onClick={deleteCompletedTodos}>
+              Delete completed
+            </Button>
+          </Box>
+        </Box>
+      </Box>
     </Layout>
   );
 };
