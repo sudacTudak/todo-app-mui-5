@@ -19,9 +19,13 @@ export const TodosStateInitializer = () => {
   }
 
   try {
+    const todos = JSON.parse(lsTodosData) as Todo[];
+
     const todosState: TodosState = {
       ...INITIAL_TODOS_STATE,
-      todos: JSON.parse(lsTodosData)
+      todos,
+      totalCount: todos.length,
+      activeCount: todos.filter((todo) => todo.status === 'active').length
     };
 
     return todosState;
@@ -38,8 +42,9 @@ export const TodosReducer = (state: TodosState, action: TodoAction) => {
     case TODOS_ACTIONS.SET_TODOS: {
       const todos = action.payload;
       const totalCount = todos.length;
-      const activeCount =
-        totalCount - todos.filter((todo) => todo.status === 'completed').length;
+      const activeCount = todos.filter(
+        (todo) => todo.status === 'active'
+      ).length;
 
       return {
         ...state,
