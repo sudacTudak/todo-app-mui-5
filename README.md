@@ -1,6 +1,7 @@
 # TodoApp
 
 Приложение, реализующее список Todo с использованием Vite, ReactJS, MaterialUI5, Vitest.
+[Netlify](https://sudac-tudak-todo-app-mui5.netlify.app/)
 
 ---
 
