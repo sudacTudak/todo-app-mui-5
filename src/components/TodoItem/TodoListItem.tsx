@@ -66,13 +66,14 @@ export const TodoListItem = ({
     <IconButton
       edge="end"
       onClick={isInputEditable ? handleEdit : handleDelete}
+      data-testid={isInputEditable ? 'todo-edit-btn' : 'todo-delete-btn'}
     >
       {isInputEditable ? <Done /> : <Delete />}
     </IconButton>
   );
 
   return (
-    <ListItem secondaryAction={itemSecondaryAction}>
+    <ListItem secondaryAction={itemSecondaryAction} data-testid={'todo-item'}>
       <ListItemIcon>
         <Checkbox
           edge="start"

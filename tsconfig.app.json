@@ -25,5 +25,5 @@
     /* For Vitest */
     "types": ["vitest/globals"]
   },
-  "include": ["src", "./src/test/setup.ts"]
+  "include": ["src", "./src/test/setup.ts", "src/tests"]
 }
