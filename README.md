@@ -1,23 +1,22 @@
 # TodoApp
 
-Приложение, реализующее список Todo с использованием Vite, ReactJS, MaterialUI5.
+Приложение, реализующее список Todo с использованием Vite, ReactJS, MaterialUI5, Vitest.
 
 ---
 
 ## Задачи:
 
-- Добавление, завершение, редактирование Todo (done);
-- Фильтрация Todo (done);
-- Удобство взаимодействия пользователя с интерфейсом (done);
-- Хранение данных в localStorage (done);
-- Приоритезация Todo (wip);
-- Покрытие тестами с использованием Jest, React-testing-library (wip);
+- Добавление, завершение, редактирование Todo;
+- Фильтрация Todo;
+- Удобство взаимодействия пользователя с интерфейсом;
+- Хранение данных в localStorage;
+- Покрытие тестами с использованием Vitest, React-testing-library;
 
 ## Технологии:
 
 - ReactJS, ReactHooks;
 - MaterialUI v5;
-- Jest, React-testing-library (soon);
+- Vitest, React-testing-library;
 
 ## Запуск:
 
